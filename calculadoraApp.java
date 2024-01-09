@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -8,24 +9,30 @@ public class calculadoraApp{
         Double num1;
         Double num2;
         String operator;
-        boolean continue;
+        boolean continueOperation;
 
+
+    try{
         do{
-        System.out.println("Type the first number: ");
-        num1 = scanner.nextDouble();
+            System.out.println("Type the first number: ");
+            num1 = scanner.nextDouble();
 
-        System.out.println("Type the operator(+,_,/,*): ");
-        operator = scanner.next();
+            System.out.println("Type the operator(+,_,/,*): ");
+            operator = scanner.next();
 
-        System.out.println("Type the second number: ");
-        num2 = scanner.nextDouble();
+            System.out.println("Type the second number: ");
+            num2 = scanner.nextDouble();
 
-        System.out.println("Result: " + calculating(num1, num2, operator));
-            
-        continue = newOperation();
-        }while(continue);
+            System.out.println("Result: " + calculating(num1, num2, operator));
+                
+            continueOperation = newOperation();
+        }while (continueOperation);
+    }catch(InputMismatchException ex){
+        System.out.println("The values must be numbers.");
     }
     
+    }
+        
     public static boolean newOperation(){
         Scanner sc = new Scanner(System.in);
 
